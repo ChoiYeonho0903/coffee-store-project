@@ -75,7 +75,7 @@ class OrderJdbcRepositoryTest {
 
         List<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(new OrderItem(1L, orderId, productId, Category.COFFEE_BEAN_PACKAGE, 1000L, 3));
-        Order newOrder = new Order(orderId, new Email("example@gamil.com"), "Seoul", "010", orderItems, OrderStatus.ACCEPTED);
+        Order newOrder = new Order(orderId, "example@gamil.com", "Seoul", "010", orderItems, OrderStatus.ACCEPTED);
         orderRepository.insert(newOrder);
         Optional<Order> findOrder = orderRepository.findById(newOrder.getOrderId());
         Assertions.assertThat(findOrder.isEmpty()).isFalse();

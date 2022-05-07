@@ -81,7 +81,7 @@ public class OrderJdbcRepository implements OrderRepository {
 
     private static final RowMapper<Order> orderRowMapper = (resultSet, i) -> {
         UUID orderId = JdbcUtils.toUUId(resultSet.getBytes("order_id"));
-        Email email = new Email(resultSet.getString("email"));
+        String email = resultSet.getString("email");
         String address = resultSet.getString("address");
         String postcode = resultSet.getString("postcode");
         OrderStatus orderStatus = OrderStatus.valueOf(resultSet.getString("order_status"));
@@ -103,7 +103,7 @@ public class OrderJdbcRepository implements OrderRepository {
     private Map<String, Object> toOrderParamMap(Order order) {
         var paramMap = new HashMap<String, Object>();
         paramMap.put("orderId", order.getOrderId().toString().getBytes());
-        paramMap.put("email", order.getEmail().getAddress());
+        paramMap.put("email", order.getEmail());
         paramMap.put("address", order.getAddress());
         paramMap.put("postcode", order.getPostcode());
         paramMap.put("orderStatus", order.getOrderStatus().toString());

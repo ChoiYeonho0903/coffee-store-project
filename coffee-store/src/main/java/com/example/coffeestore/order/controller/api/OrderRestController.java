@@ -25,11 +25,6 @@ public class OrderRestController {
 
     private final OrderService orderService;
 
-//    @GetMapping("/orders")
-//    public OrderResponseDto orderList(@RequestParam UUID orderId) {
-//
-//    }
-
     @PostMapping("/orders")
     public Object addOrder(@RequestBody @Validated CreateOrderRequestDto orderRequestDto, BindingResult bindingResult) {
         long totalPrice = 0L;

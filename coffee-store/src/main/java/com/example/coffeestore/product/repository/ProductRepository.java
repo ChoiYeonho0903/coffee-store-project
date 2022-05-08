@@ -2,7 +2,6 @@ package com.example.coffeestore.product.repository;
 
 import com.example.coffeestore.product.domain.Category;
 import com.example.coffeestore.product.domain.Product;
-import java.io.PipedOutputStream;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;

@@ -57,7 +57,7 @@ class ProductJdbcRepositoryTest {
 
     @BeforeEach
     void beforeEach() {
-        defaultProduct = new Product(UUID.randomUUID(), "default-product", Category.COFFEE_BEAN_PACKAGE, 1000L,
+        defaultProduct = new Product(UUID.randomUUID(), "default-product", Category.COFFEE_BEAN, 1000L,
             "description", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         productRepository.insert(defaultProduct);
     }
@@ -70,7 +70,7 @@ class ProductJdbcRepositoryTest {
     @Test
     @DisplayName("상품을 추가 성공.")
     void testInsert() {
-        Product newProduct = new Product(UUID.randomUUID(), "new-product", Category.COFFEE_BEAN_PACKAGE, 1000L);
+        Product newProduct = new Product(UUID.randomUUID(), "new-product", Category.COFFEE_BEAN, 1000L);
         productRepository.insert(newProduct);
         List<Product> products = productRepository.findAll();
         assertThat(products.isEmpty()).isFalse();
@@ -94,7 +94,7 @@ class ProductJdbcRepositoryTest {
     @Test
     @DisplayName("상품들을 카테고리로 조회 성공")
     void testFindByCategory() {
-        var products = productRepository.findByCategory(Category.COFFEE_BEAN_PACKAGE);
+        var products = productRepository.findByCategory(Category.COFFEE_BEAN);
         assertThat(products.isEmpty()).isFalse();
     }
 

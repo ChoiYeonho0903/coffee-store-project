@@ -7,6 +7,7 @@ import com.example.coffeestore.product.domain.Category;
 import com.example.coffeestore.product.domain.Product;
 import com.example.coffeestore.product.repository.ProductRepository;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -48,5 +49,10 @@ public class ProductServiceImpl implements ProductService {
         product.setDescription(updateProductRequestDto.getDescription());
 
         return new UpdateProductRequestDto(productRepository.update(product));
+    }
+
+    @Override
+    public void deleteByProductId(UUID productId) {
+        productRepository.deleteById(productId);
     }
 }

@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Range;
 
-@Getter
+@Getter @Setter
 public class CreateProductRequestDto {
 
     @NotBlank

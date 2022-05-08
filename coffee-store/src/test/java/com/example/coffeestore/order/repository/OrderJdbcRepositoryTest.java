@@ -70,11 +70,11 @@ class OrderJdbcRepositoryTest {
     void testInsert() {
         UUID orderId = UUID.randomUUID();
         UUID productId = UUID.randomUUID();
-        Product product = new Product(productId, "coffee", Category.COFFEE_BEAN_PACKAGE, 1000L);
+        Product product = new Product(productId, "coffee", Category.COFFEE_BEAN, 1000L);
         productRepository.insert(product);
 
         List<OrderItem> orderItems = new ArrayList<>();
-        orderItems.add(new OrderItem(1L, orderId, productId, Category.COFFEE_BEAN_PACKAGE, 1000L, 3));
+        orderItems.add(new OrderItem(1L, orderId, productId, Category.COFFEE_BEAN, 1000L, 3));
         Order newOrder = new Order(orderId, "example@gamil.com", "Seoul", "010", orderItems, OrderStatus.ACCEPTED);
         orderRepository.insert(newOrder);
         Optional<Order> findOrder = orderRepository.findById(newOrder.getOrderId());

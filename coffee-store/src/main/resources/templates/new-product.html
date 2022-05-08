@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    .field-error {
+      border-color: #dc3545;
+      color: #dc3545;
+    }
+  </style>
+
+  <title>Coffee Store</title>
+</head>
+<body class="container-fluid">
+<h1>Coffee Store</h1>
+<h2>Product 추가</h2>
+<a th:href="@{/new-product}" href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add Product</a>
+<form th:action="@{/products}" th:object="${product}" method="post">
+  <div class="form-group">
+    <label for="productName" class="form-label">Name</label>
+    <input type="text" class="form-control" id="productName" th:field="*{productName}" th:errorclass="field-error">
+    <div class="field-error" th:errors="*{productName}">
+      상품명 오류
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="category" class="form-label">Category</label>
+    <select class="form-control" id="category" th:field="*{category}">
+      <option th:selected th:value="STARBUCKS" th:text="STARBUCKS"></option>
+      <option th:value="A_TWOSOME_PLACE" th:text="A_TWOSOME_PLACE"></option>
+      <option th:value="EDIYA_COFFEE" th:text="EDIYA_COFFEE"></option>
+      <option th:value="COFFEE_BEAN" th:text="COFFEE_BEAN"></option>
+      <option th:value="HOLLYS_COFFEE" th:text="HOLLYS_COFFEE"></option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="price" class="form-label">Price</label>
+    <input type="number" class="form-control" id="price" th:field="*{price}" th:errorclass="field-error">
+    <div class="field-error" th:errors="*{price}">
+      가격 오류
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="description" class="form-label">Description</label>
+    <textarea type="number" class="form-control" id="description" th:field="*{description}"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

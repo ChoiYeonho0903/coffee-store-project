@@ -27,6 +27,4 @@ public class ProductExceptionControllerAdvice {
         log.error("Exception", e);
         return new ErrorResult("INTERNAL_SERVER_ERROR", "내부 오류");
     }
-
-
 }
